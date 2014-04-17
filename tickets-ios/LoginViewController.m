@@ -29,10 +29,16 @@
         NSError *error=nil;
         NSDictionary *aaa=[NSJSONSerialization JSONObjectWithData:data options: NSJSONReadingMutableContainers error:&error];
         NSString* sth=[aaa objectForKey: @"auth_token"];
-        NSLog(@"%@", sth);
+
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        [defaults setObject:sth forKey:@"token"];
+//        NSLog(@"dddd %@", [defaults valueForKey:@"token"]);
         
-//        TableViewController *tableView = [[TableViewController alloc] initWithNibName:@"Bookings" bundle:nil];
-//        [self.navigationController pushViewController:tableView animated:YES];
+        
+        TableViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"TableView"];
+        [self presentViewController:vc animated:YES completion:nil];
+    }else{
+        NSLog(@"Error!");
     }
 }
 

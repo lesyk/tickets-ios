@@ -28,7 +28,14 @@
 {
     [super viewDidLoad];
     self.users = [[NSMutableArray alloc] init];
-    NSString * response = [HTTPHelper getResponse:@"http://0.0.0.0:3000/bookings.json?auth_token=TXe-CAvQ7hLd7y6YJa5e"];
+    
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSString *token = [defaults valueForKey:@"token"];
+    
+    NSMutableString *url = [[NSMutableString alloc] initWithString:@"http://0.0.0.0:3000/bookings.json?auth_token="];
+    [url appendString:token];
+    
+    NSString * response = [HTTPHelper getResponse:url];
     
     NSData* data = [response dataUsingEncoding:NSUTF8StringEncoding];
     NSArray *jsonObject = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
