@@ -26,6 +26,10 @@
 
 - (void)viewDidLoad
 {
+    [self.tableView setContentInset:UIEdgeInsetsMake(20,
+                                                     self.tableView.contentInset.left,
+                                                     self.tableView.contentInset.bottom,
+                                                     self.tableView.contentInset.right)];
     [super viewDidLoad];
     self.users = [[NSMutableArray alloc] init];
     
