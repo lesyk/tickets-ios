@@ -36,7 +36,7 @@ static NSString *const host = @"http://0.0.0.0:3000/";
     return trimmedResponse;
 }
 
-+ (NSString *) postResponse:(NSString *)input{
++ (NSString *) postResponse:(NSString *)input withMapData:(NSDictionary *)mapData{
     NSError *error;
     
     NSMutableString *url = [[NSMutableString alloc] initWithString:@""];
@@ -50,12 +50,6 @@ static NSString *const host = @"http://0.0.0.0:3000/";
     [request setCachePolicy:NSURLRequestUseProtocolCachePolicy];
     [request setTimeoutInterval:60.0];
     [request setURL:[NSURL URLWithString:url]];
-    
-    NSArray *objects = [NSArray arrayWithObjects:@"password",@"lesyk.victor@gmail.com",  nil];
-    NSArray *keys = [NSArray arrayWithObjects:@"password",@"email", nil];
-    NSDictionary *questionDict = [NSDictionary dictionaryWithObjects:objects forKeys:keys];
-    
-    NSDictionary *mapData = [NSDictionary dictionaryWithObject:questionDict forKey:@"user"];
     
     NSData *postData = [NSJSONSerialization dataWithJSONObject:mapData options:0 error:&error];
     [request setHTTPBody:postData];

@@ -22,7 +22,11 @@
 
 - (IBAction)loginAction:(id)sender{
     
-    NSString * response = [HTTPHelper postResponse:@"users/sign_in"];
+    NSArray *objects = [NSArray arrayWithObjects:@"password",@"lesyk.victor@gmail.com",  nil];
+    NSArray *keys = [NSArray arrayWithObjects:@"password",@"email", nil];
+    NSDictionary *questionDict = [NSDictionary dictionaryWithObjects:objects forKeys:keys];
+    NSDictionary *mapData = [NSDictionary dictionaryWithObject:questionDict forKey:@"user"];
+    NSString * response = [HTTPHelper postResponse:@"users/sign_in" withMapData:mapData];
 
     if(response){
         NSData* data = [response dataUsingEncoding:NSUTF8StringEncoding];
@@ -33,7 +37,6 @@
         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
         [defaults setObject:sth forKey:@"token"];
 //        NSLog(@"dddd %@", [defaults valueForKey:@"token"]);
-        
         
         BookingsViewController *bookingsView = [self.storyboard instantiateViewControllerWithIdentifier:@"MainMenu"];
         [self presentViewController:bookingsView animated:YES completion:nil];
