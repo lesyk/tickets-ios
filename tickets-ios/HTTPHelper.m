@@ -7,7 +7,7 @@
 
 #import "HTTPHelper.h"
 
-static NSString *const host = @"http://0.0.0.0:3000/";
+static NSString *const host = @"http://0.0.0.0:3000";
 
 @implementation HTTPHelper
 
@@ -61,7 +61,8 @@ static NSString *const host = @"http://0.0.0.0:3000/";
     NSHTTPURLResponse *responseCode = nil;
     NSData *oResponseData = [NSURLConnection sendSynchronousRequest:request returningResponse:&responseCode error:&error];
     
-    if([responseCode statusCode] != 200){
+//    solve with server issue 406 code
+    if([responseCode statusCode] != 200 && [responseCode statusCode] != 406){
         NSLog(@"Error getting %@, HTTP status code %i", input, [responseCode statusCode]);
         return nil;
     }

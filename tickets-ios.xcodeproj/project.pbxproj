@@ -21,6 +21,7 @@
 		6F527CAA18EC848C000D578D /* tickets-ios-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6F527C9F18EC848C000D578D /* tickets-ios-Info.plist */; };
 		6F527CAB18EC848C000D578D /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F527CA218EC848C000D578D /* User.m */; };
 		6FF20F90190D19B30060DF24 /* BookingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FF20F8F190D19B30060DF24 /* BookingViewController.m */; };
+		6FF20F95190D55350060DF24 /* RegistrationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FF20F94190D55350060DF24 /* RegistrationViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -47,6 +48,8 @@
 		6F527CA218EC848C000D578D /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = User.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		6FF20F8E190D19B30060DF24 /* BookingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BookingViewController.h; sourceTree = "<group>"; };
 		6FF20F8F190D19B30060DF24 /* BookingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BookingViewController.m; sourceTree = "<group>"; };
+		6FF20F93190D55350060DF24 /* RegistrationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegistrationViewController.h; sourceTree = "<group>"; };
+		6FF20F94190D55350060DF24 /* RegistrationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegistrationViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -143,6 +146,8 @@
 			children = (
 				6F527C9A18EC848C000D578D /* LoginViewController.h */,
 				6F527C9B18EC848C000D578D /* LoginViewController.m */,
+				6FF20F93190D55350060DF24 /* RegistrationViewController.h */,
+				6FF20F94190D55350060DF24 /* RegistrationViewController.m */,
 				6FF20F91190D23DD0060DF24 /* Bookings */,
 			);
 			name = Controllers;
@@ -214,6 +219,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6F527CA918EC848C000D578D /* BookingsViewController.m in Sources */,
+				6FF20F95190D55350060DF24 /* RegistrationViewController.m in Sources */,
 				6F527CA818EC848C000D578D /* main.m in Sources */,
 				6F527CA718EC848C000D578D /* LoginViewController.m in Sources */,
 				6FF20F90190D19B30060DF24 /* BookingViewController.m in Sources */,

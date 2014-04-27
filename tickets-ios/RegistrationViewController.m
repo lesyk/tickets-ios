@@ -1,17 +1,21 @@
 //
-//  LoginViewController.m
+//  RegistrationViewController.m
 //  tickets-ios
 //
-//  Created by Victor Lesyk on 4/2/14.
-//  Copyright (c) 2014 Viktor Lesyk. All rights reserved.
+//  Created by Victor Lesyk on 4/27/14.
+//
 //
 
-#import "LoginViewController.h"
+#import "RegistrationViewController.h"
 #import "HTTPHelper.h"
-#import "BookingsViewController.h"
+#import "LoginViewController.h"
 
-@implementation LoginViewController
-@synthesize emailField, passwordField;
+@interface RegistrationViewController ()
+
+@end
+
+@implementation RegistrationViewController
+@synthesize emailField, passwordField, passwordConfirmationField;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -54,32 +58,31 @@
     if ([passwordField isFirstResponder] && [touch view] != passwordField) {
         [passwordField resignFirstResponder];
     }
+    if ([passwordConfirmationField isFirstResponder] && [touch view] != passwordConfirmationField) {
+        [passwordConfirmationField resignFirstResponder];
+    }
     [super touchesBegan:touches withEvent:event];
 }
 
-- (IBAction)loginAction:(id)sender{
-    
-    NSArray *objects = [NSArray arrayWithObjects:@"password",@"lesyk.victor@gmail.com",  nil];
-    NSArray *keys = [NSArray arrayWithObjects:@"password",@"email", nil];
+- (IBAction)registrationAction:(id)sender {
+    NSArray *objects = [NSArray arrayWithObjects:passwordField.text, passwordConfirmationField.text, emailField.text,  nil];
+    NSArray *keys = [NSArray arrayWithObjects:@"password_confirmation", @"password", @"email", nil];
     NSDictionary *questionDict = [NSDictionary dictionaryWithObjects:objects forKeys:keys];
     NSDictionary *mapData = [NSDictionary dictionaryWithObject:questionDict forKey:@"user"];
-    NSString * response = [HTTPHelper postResponse:@"/users/sign_in" withMapData:mapData];
+    NSString * response = [HTTPHelper postResponse:@"/users" withMapData:mapData];
     
     if(response){
-        NSData* data = [response dataUsingEncoding:NSUTF8StringEncoding];
-        NSError *error=nil;
-        NSDictionary *aaa=[NSJSONSerialization JSONObjectWithData:data options: NSJSONReadingMutableContainers error:&error];
-        NSString* sth=[aaa objectForKey: @"auth_token"];
-        
-        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-        [defaults setObject:sth forKey:@"token"];
-        //        NSLog(@"dddd %@", [defaults valueForKey:@"token"]);
-        
-        BookingsViewController *bookingsView = [self.storyboard instantiateViewControllerWithIdentifier:@"MainMenu"];
-        [self presentViewController:bookingsView animated:YES completion:nil];
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Success"
+                                                        message:@"Account was created."
+                                                       delegate:nil
+                                              cancelButtonTitle:@"OK"
+                                              otherButtonTitles:nil];
+        LoginViewController *loginView = [self.storyboard instantiateViewControllerWithIdentifier:@"LoginView"];
+        [self presentViewController:loginView animated:YES completion:nil];
+        [alert show];
     }else{
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error occured"
-                                                        message:@"Login failed."
+                                                        message:@"Account wasn't created."
                                                        delegate:nil
                                               cancelButtonTitle:@"OK"
                                               otherButtonTitles:nil];
