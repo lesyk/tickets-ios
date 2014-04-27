@@ -91,7 +91,10 @@
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    [segue.destinationViewController setBookingNumber:@"name222"];
+    if ([[segue identifier] isEqualToString:@"openBooking"])
+    {
+        [segue.destinationViewController setBookingNumber:@"name222"];
+    }
 }
 
 @end
