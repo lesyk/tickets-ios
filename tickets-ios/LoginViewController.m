@@ -8,7 +8,7 @@
 
 #import "LoginViewController.h"
 #import "HTTPHelper.h"
-#import "TableViewController.h"
+#import "BookingsViewController.h"
 
 @interface LoginViewController ()
 
@@ -35,8 +35,8 @@
 //        NSLog(@"dddd %@", [defaults valueForKey:@"token"]);
         
         
-        TableViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"MainMenu"];
-        [self presentViewController:vc animated:YES completion:nil];
+        BookingsViewController *bookingsView = [self.storyboard instantiateViewControllerWithIdentifier:@"MainMenu"];
+        [self presentViewController:bookingsView animated:YES completion:nil];
     }else{
         NSLog(@"Error!");
     }

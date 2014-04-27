@@ -6,15 +6,16 @@
 //  Copyright (c) 2014 Viktor Lesyk. All rights reserved.
 //
 
-#import "TableViewController.h"
+#import "BookingsViewController.h"
 #import "User.h"
 #import "HTTPHelper.h"
+#import "BookingViewController.h"
 
-@interface TableViewController ()
+@interface BookingsViewController ()
 @property NSMutableArray* users;
 @end
 
-@implementation TableViewController
+@implementation BookingsViewController
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -84,6 +85,13 @@
     cell.detailTextLabel.text = curUser.lastName;
     
     return cell;
+}
+
+#pragma mark - Table view delegate
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    [segue.destinationViewController setBookingNumber:@"name222"];
 }
 
 @end

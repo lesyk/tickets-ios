@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13C64" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="Ng6-VB-Q4o">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13C1021" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="Ng6-VB-Q4o">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
     <scenes>
-        <!--Table View Controller - Bookings-->
+        <!--Bookings View Controller - Bookings-->
         <scene sceneID="XUC-HO-KMu">
             <objects>
-                <tableViewController storyboardIdentifier="TableView" id="BXz-Hw-foT" customClass="TableViewController" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="TableView" id="BXz-Hw-foT" customClass="BookingsViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="bottom" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="8kF-BQ-Rs7">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="top" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" textLabel="CBL-x1-GnB" detailTextLabel="2GO-Bx-q9e" style="IBUITableViewCellStyleSubtitle" id="Mh1-5N-uEH">
-                                <rect key="frame" x="0.0" y="22" width="320" height="44"/>
+                            <tableViewCell contentMode="top" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" textLabel="CBL-x1-GnB" detailTextLabel="2GO-Bx-q9e" style="IBUITableViewCellStyleSubtitle" id="Mh1-5N-uEH">
+                                <rect key="frame" x="0.0" y="86" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Mh1-5N-uEH" id="k1I-hw-5iz">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="CBL-x1-GnB">
@@ -36,6 +36,9 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="NGg-an-FrS" kind="push" id="5Js-3h-R1k"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -44,13 +47,50 @@
                         </connections>
                     </tableView>
                     <tabBarItem key="tabBarItem" title="Bookings" id="gOS-lX-Qs9"/>
+                    <navigationItem key="navigationItem" title="Bookings" id="vdj-om-4C9"/>
                     <connections>
                         <outlet property="tableView" destination="8kF-BQ-Rs7" id="FOz-VL-vnd"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hNf-El-tXr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1302" y="-725"/>
+            <point key="canvasLocation" x="1796" y="-786"/>
+        </scene>
+        <!--Booking View Controller - Booking-->
+        <scene sceneID="2ri-Ab-XC8">
+            <objects>
+                <viewController storyboardIdentifier="bookingView" useStoryboardIdentifierAsRestorationIdentifier="YES" id="NGg-an-FrS" customClass="BookingViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="QGP-23-EYH"/>
+                        <viewControllerLayoutGuide type="bottom" id="MLo-ic-yHx"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="vPI-7e-zFv">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6Sj-eN-1jU">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <subviews>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="BookingNumber" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I1I-Kd-XRo">
+                                        <rect key="frame" x="20" y="80" width="150" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Booking" id="Rms-Y7-NKF"/>
+                    <connections>
+                        <outlet property="bookingNumberLabel" destination="I1I-Kd-XRo" id="T4v-hD-hT9"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="RI6-0l-C5D" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2262" y="-786"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="qHz-en-ljz">
@@ -71,6 +111,22 @@
             </objects>
             <point key="canvasLocation" x="1302" y="1"/>
         </scene>
+        <!--Navigation Controller - Bookings-->
+        <scene sceneID="yjJ-vC-m9j">
+            <objects>
+                <navigationController definesPresentationContext="YES" id="QNJ-Nb-bGg" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Bookings" id="PNb-hW-Auf"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="1dd-rb-Liy">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="BXz-Hw-foT" kind="relationship" relationship="rootViewController" id="we2-fH-fAs"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ssL-sn-f4W" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1295" y="-786"/>
+        </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="Lot-nJ-9q8">
             <objects>
@@ -82,13 +138,13 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
-                        <segue destination="BXz-Hw-foT" kind="relationship" relationship="viewControllers" id="wf1-wq-zTU"/>
+                        <segue destination="QNJ-Nb-bGg" kind="relationship" relationship="viewControllers" id="ak8-r2-qG0"/>
                         <segue destination="rhl-Ki-heU" kind="relationship" relationship="viewControllers" id="1SF-fk-2VM"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lha-JE-ebR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="765" y="-316"/>
+            <point key="canvasLocation" x="751" y="-316"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Mgs-6U-AWU">
@@ -134,7 +190,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tE0-T7-PXa">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="password" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tE0-T7-PXa">
                                 <rect key="frame" x="65" y="284" width="190" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -154,7 +210,7 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="SJm-Ft-WOk">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="lesyk.victor@gmail.com" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="SJm-Ft-WOk">
                                 <rect key="frame" x="65" y="208" width="190" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
