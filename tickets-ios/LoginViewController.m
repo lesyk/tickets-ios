@@ -22,7 +22,7 @@
 
 - (IBAction)loginAction:(id)sender{
     
-    NSString * response = [HTTPHelper postResponse:@"http://0.0.0.0:3000/users/sign_in"];
+    NSString * response = [HTTPHelper postResponse:@"users/sign_in"];
 
     if(response){
         NSData* data = [response dataUsingEncoding:NSUTF8StringEncoding];

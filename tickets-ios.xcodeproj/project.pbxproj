@@ -99,10 +99,8 @@
 				6F527C9418EC848C000D578D /* AppDelegate.m */,
 				6F527C9718EC848C000D578D /* HTTPHelper.h */,
 				6F527C9818EC848C000D578D /* HTTPHelper.m */,
-				6F527C9A18EC848C000D578D /* LoginViewController.h */,
-				6F527C9B18EC848C000D578D /* LoginViewController.m */,
-				6FF20F91190D23DD0060DF24 /* Bookings */,
-				6F527CAD18EC873D000D578D /* Model */,
+				6FF20F92190D3A6B0060DF24 /* Controllers */,
+				6F527CAD18EC873D000D578D /* Models */,
 				6F527CAC18EC84A8000D578D /* Supporting Files */,
 			);
 			path = "tickets-ios";
@@ -120,13 +118,13 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		6F527CAD18EC873D000D578D /* Model */ = {
+		6F527CAD18EC873D000D578D /* Models */ = {
 			isa = PBXGroup;
 			children = (
 				6F527CA118EC848C000D578D /* User.h */,
 				6F527CA218EC848C000D578D /* User.m */,
 			);
-			name = Model;
+			name = Models;
 			sourceTree = "<group>";
 		};
 		6FF20F91190D23DD0060DF24 /* Bookings */ = {
@@ -138,6 +136,16 @@
 				6FF20F8F190D19B30060DF24 /* BookingViewController.m */,
 			);
 			name = Bookings;
+			sourceTree = "<group>";
+		};
+		6FF20F92190D3A6B0060DF24 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				6F527C9A18EC848C000D578D /* LoginViewController.h */,
+				6F527C9B18EC848C000D578D /* LoginViewController.m */,
+				6FF20F91190D23DD0060DF24 /* Bookings */,
+			);
+			name = Controllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

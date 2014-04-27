@@ -10,4 +10,6 @@
 
 @implementation User
 
+@synthesize firstName, lastName;
+
 @end

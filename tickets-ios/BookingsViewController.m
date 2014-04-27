@@ -37,7 +37,7 @@
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSString *token = [defaults valueForKey:@"token"];
     
-    NSMutableString *url = [[NSMutableString alloc] initWithString:@"http://0.0.0.0:3000/bookings.json?auth_token="];
+    NSMutableString *url = [[NSMutableString alloc] initWithString:@"bookings.json?auth_token="];
     [url appendString:token];
     
     NSString * response = [HTTPHelper getResponse:url];

@@ -1,11 +1,24 @@
+//
+//  HTTPHelper.h
+//  SimpleTable
+//
+//  Based on DX123-XL on 2014-01-07.
+//
+
 #import "HTTPHelper.h"
+
+static NSString *const host = @"http://0.0.0.0:3000/";
 
 @implementation HTTPHelper
 
 + (NSString *) getResponse:(NSString *)input{
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
     [request setHTTPMethod:@"GET"];
-    [request setURL:[NSURL URLWithString:input]];
+
+    NSMutableString *url = [[NSMutableString alloc] initWithString:@""];
+    [url appendString:host];
+    [url appendString:input];
+    [request setURL:[NSURL URLWithString:url]];
     
     NSError *error = [[NSError alloc] init];
     NSHTTPURLResponse *responseCode = nil;
@@ -24,41 +37,19 @@
 }
 
 + (NSString *) postResponse:(NSString *)input{
-//    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
-//    [request setHTTPMethod:@"POST"];
-//    [request setURL:[NSURL URLWithString:input]];
-//    NSString *postString = @"email='lesyk.victor@gmail.com'&password='password'";
-//    [request setHTTPBody:[postString dataUsingEncoding:NSUTF8StringEncoding]];
-//    
-//    
-//    NSError *error = [[NSError alloc] init];
-//    NSHTTPURLResponse *responseCode = nil;
-//    
-//    NSData *oResponseData = [NSURLConnection sendSynchronousRequest:request returningResponse:&responseCode error:&error];
-//    
-//    if([responseCode statusCode] != 200){
-//        NSLog(@"Error getting %@, HTTP status code %i", input, [responseCode statusCode]);
-//        return nil;
-//    }
-//    
-//    NSString* tResponse = [[NSString alloc] initWithData:oResponseData encoding:NSUTF8StringEncoding];
-//    NSString *trimmedResponse = [tResponse stringByTrimmingCharactersInSet:
-//                                 [NSCharacterSet newlineCharacterSet]];
-//    return trimmedResponse;
-    
     NSError *error;
     
-    NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
-    NSURLSession *session = [NSURLSession sessionWithConfiguration:configuration delegate:self delegateQueue:nil];
-    NSURL *url = [NSURL URLWithString:input];
-    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url
-                                                           cachePolicy:NSURLRequestUseProtocolCachePolicy
-                                                       timeoutInterval:60.0];
+    NSMutableString *url = [[NSMutableString alloc] initWithString:@""];
+    [url appendString:host];
+    [url appendString:input];
     
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
     [request addValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
     [request addValue:@"application/json" forHTTPHeaderField:@"Accept"];
-    
     [request setHTTPMethod:@"POST"];
+    [request setCachePolicy:NSURLRequestUseProtocolCachePolicy];
+    [request setTimeoutInterval:60.0];
+    [request setURL:[NSURL URLWithString:url]];
     
     NSArray *objects = [NSArray arrayWithObjects:@"password",@"lesyk.victor@gmail.com",  nil];
     NSArray *keys = [NSArray arrayWithObjects:@"password",@"email", nil];
@@ -73,14 +64,7 @@
 //        NSLog(@"%@", request);
 //    }
     
-//    NSURLSessionDataTask *postDataTask = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-    
-//    }];
-    
-//    [postDataTask resume];
-    
     NSHTTPURLResponse *responseCode = nil;
-    
     NSData *oResponseData = [NSURLConnection sendSynchronousRequest:request returningResponse:&responseCode error:&error];
     
     if([responseCode statusCode] != 200){
@@ -93,7 +77,6 @@
                                  [NSCharacterSet newlineCharacterSet]];
     
 //    NSLog(@"%@", trimmedResponse);
-    
     return trimmedResponse;
 }
 
