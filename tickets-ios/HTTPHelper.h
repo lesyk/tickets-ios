@@ -9,5 +9,6 @@
 
 + (NSString *) getResponse: (NSString*)input;
 + (NSString *) postResponse:(NSString *)input withMapData:(NSDictionary *)mapData;
++ (NSString *) putResponse:(NSString *)input withMapData:(NSDictionary *)mapData;
 
 @end

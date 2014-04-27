@@ -75,4 +75,43 @@ static NSString *const host = @"http://0.0.0.0:3000";
     return trimmedResponse;
 }
 
++ (NSString *) putResponse:(NSString *)input withMapData:(NSDictionary *)mapData{
+    NSError *error;
+    
+    NSMutableString *url = [[NSMutableString alloc] initWithString:@""];
+    [url appendString:host];
+    [url appendString:input];
+    
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
+    [request addValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    [request addValue:@"application/json" forHTTPHeaderField:@"Accept"];
+    [request setHTTPMethod:@"PUT"];
+    [request setCachePolicy:NSURLRequestUseProtocolCachePolicy];
+    [request setTimeoutInterval:60.0];
+    [request setURL:[NSURL URLWithString:url]];
+    
+    NSData *postData = [NSJSONSerialization dataWithJSONObject:mapData options:0 error:&error];
+    [request setHTTPBody:postData];
+    
+    //    if(request){
+    //        NSLog(@"%@", request);
+    //    }
+    
+    NSHTTPURLResponse *responseCode = nil;
+    NSData *oResponseData = [NSURLConnection sendSynchronousRequest:request returningResponse:&responseCode error:&error];
+    
+    //    solve with server issue 406 code
+    if([responseCode statusCode] != 200 && [responseCode statusCode] != 406){
+        NSLog(@"Error getting %@, HTTP status code %i", input, [responseCode statusCode]);
+        return nil;
+    }
+    
+    NSString* tResponse = [[NSString alloc] initWithData:oResponseData encoding:NSUTF8StringEncoding];
+    NSString *trimmedResponse = [tResponse stringByTrimmingCharactersInSet:
+                                 [NSCharacterSet newlineCharacterSet]];
+    
+    //    NSLog(@"%@", trimmedResponse);
+    return trimmedResponse;
+}
+
 @end

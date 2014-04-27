@@ -152,10 +152,10 @@
             </objects>
             <point key="canvasLocation" x="2396" y="-786"/>
         </scene>
-        <!--View Controller-->
+        <!--Edit User Registration View Controller-->
         <scene sceneID="EXK-5K-MMy">
             <objects>
-                <viewController id="vcX-eu-FBN" sceneMemberID="viewController">
+                <viewController id="vcX-eu-FBN" customClass="EditUserRegistrationViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="K8G-eR-Zxo"/>
                         <viewControllerLayoutGuide type="bottom" id="x1P-Ha-jdo"/>
@@ -165,58 +165,78 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="password" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dtc-YW-lMi">
-                                <rect key="frame" x="65" y="264" width="190" height="30"/>
+                                <rect key="frame" x="20" y="224" width="190" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Email" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p1F-te-60z">
-                                <rect key="frame" x="65" y="168" width="42" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Password" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Qw-uK-yhB">
-                                <rect key="frame" x="65" y="235" width="76" height="21"/>
+                                <rect key="frame" x="20" y="99" width="42" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="password" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kC8-JB-5A5">
-                                <rect key="frame" x="65" y="331" width="190" height="30"/>
+                                <rect key="frame" x="20" y="291" width="190" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Password Confirmation" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2VR-ER-hhv">
-                                <rect key="frame" x="65" y="302" width="180" height="21"/>
+                                <rect key="frame" x="20" y="262" width="180" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="lesyk.victor@gmail.com" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="V7v-jf-ird">
-                                <rect key="frame" x="65" y="197" width="190" height="30"/>
+                                <rect key="frame" x="20" y="128" width="190" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gQU-Ou-nga">
-                                <rect key="frame" x="65" y="369" width="34" height="30"/>
+                                <rect key="frame" x="20" y="439" width="34" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Save">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <action selector="registrationAction:" destination="h4v-5v-6Lo" eventType="touchUpInside" id="VYE-A5-tQt"/>
+                                    <action selector="save:" destination="vcX-eu-FBN" eventType="touchUpInside" id="lFv-pE-mnL"/>
                                 </connections>
                             </button>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Current password (we need your current password to confirm your changes)" translatesAutoresizingMaskIntoConstraints="NO" id="FF6-80-nDb">
+                                <rect key="frame" x="20" y="329" width="240" height="64"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="password" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="MFq-R6-LsP">
+                                <rect key="frame" x="20" y="401" width="190" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Password (leave blank if you don't want to change it)" translatesAutoresizingMaskIntoConstraints="NO" id="zLA-p5-BeR">
+                                <rect key="frame" x="20" y="166" width="240" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="8OO-rB-NzF"/>
+                    <connections>
+                        <outlet property="currentPasswordField" destination="dtc-YW-lMi" id="Yb5-IN-Ynx"/>
+                        <outlet property="emailField" destination="V7v-jf-ird" id="OeW-w3-71M"/>
+                        <outlet property="passwordConfirmationField" destination="kC8-JB-5A5" id="1HZ-HO-kUm"/>
+                        <outlet property="passwordField" destination="MFq-R6-LsP" id="qTO-Ag-IVd"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jyw-Ab-w3W" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -482,10 +502,10 @@
             </objects>
             <point key="canvasLocation" x="231" y="-316"/>
         </scene>
-        <!--Registration View Controller-->
+        <!--New User Registration View Controller-->
         <scene sceneID="j7o-Vh-yf9">
             <objects>
-                <viewController id="h4v-5v-6Lo" customClass="RegistrationViewController" sceneMemberID="viewController">
+                <viewController id="h4v-5v-6Lo" customClass="NewUserRegistrationViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="A5D-qJ-xib"/>
                         <viewControllerLayoutGuide type="bottom" id="jgu-xY-ted"/>

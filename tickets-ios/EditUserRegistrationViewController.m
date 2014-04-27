@@ -1,21 +1,20 @@
 //
-//  RegistrationViewController.m
+//  EditUserViewController.m
 //  tickets-ios
 //
 //  Created by Victor Lesyk on 4/27/14.
 //
 //
 
-#import "RegistrationViewController.h"
+#import "EditUserRegistrationViewController.h"
 #import "HTTPHelper.h"
-#import "LoginViewController.h"
 
-@interface RegistrationViewController ()
+@interface EditUserRegistrationViewController ()
 
 @end
 
-@implementation RegistrationViewController
-@synthesize emailField, passwordField, passwordConfirmationField;
+@implementation EditUserRegistrationViewController
+@synthesize emailField, passwordField, currentPasswordField, passwordConfirmationField;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -48,12 +47,14 @@
     // Pass the selected object to the new view controller.
 }
 */
-
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     
     UITouch *touch = [[event allTouches] anyObject];
     if ([emailField isFirstResponder] && [touch view] != emailField) {
         [emailField resignFirstResponder];
+    }
+    if ([currentPasswordField isFirstResponder] && [touch view] != currentPasswordField) {
+        [currentPasswordField resignFirstResponder];
     }
     if ([passwordField isFirstResponder] && [touch view] != passwordField) {
         [passwordField resignFirstResponder];
@@ -64,25 +65,23 @@
     [super touchesBegan:touches withEvent:event];
 }
 
-- (IBAction)registrationAction:(id)sender {
-    NSArray *objects = [NSArray arrayWithObjects:passwordField.text, passwordConfirmationField.text, emailField.text,  nil];
-    NSArray *keys = [NSArray arrayWithObjects:@"password_confirmation", @"password", @"email", nil];
+- (IBAction)save:(id)sender {
+    NSArray *objects = [NSArray arrayWithObjects:currentPasswordField.text, passwordField.text, passwordConfirmationField.text, emailField.text,  nil];
+    NSArray *keys = [NSArray arrayWithObjects:@"current_password", @"password_confirmation", @"password", @"email", nil];
     NSDictionary *questionDict = [NSDictionary dictionaryWithObjects:objects forKeys:keys];
     NSDictionary *mapData = [NSDictionary dictionaryWithObject:questionDict forKey:@"user"];
-    NSString * response = [HTTPHelper postResponse:@"/users" withMapData:mapData];
+    NSString * response = [HTTPHelper putResponse:@"/users" withMapData:mapData];
     
     if(response){
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Success"
-                                                        message:@"Account was created."
+                                                        message:@"Account was updated."
                                                        delegate:nil
                                               cancelButtonTitle:@"OK"
                                               otherButtonTitles:nil];
-        LoginViewController *loginView = [self.storyboard instantiateViewControllerWithIdentifier:@"LoginView"];
-        [self presentViewController:loginView animated:YES completion:nil];
         [alert show];
     }else{
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error occured"
-                                                        message:@"Account wasn't created."
+                                                        message:@"Account wasn't updated."
                                                        delegate:nil
                                               cancelButtonTitle:@"OK"
                                               otherButtonTitles:nil];
@@ -90,5 +89,4 @@
         [alert show];
     }
 }
-
 @end
