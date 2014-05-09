@@ -19,7 +19,11 @@
 		6F527CA818EC848C000D578D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F527C9C18EC848C000D578D /* main.m */; };
 		6F527CA918EC848C000D578D /* BookingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F527C9E18EC848C000D578D /* BookingsViewController.m */; };
 		6F527CAA18EC848C000D578D /* tickets-ios-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6F527C9F18EC848C000D578D /* tickets-ios-Info.plist */; };
-		6F527CAB18EC848C000D578D /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F527CA218EC848C000D578D /* User.m */; };
+		6F527CAB18EC848C000D578D /* Booking.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F527CA218EC848C000D578D /* Booking.m */; };
+		6F9A6B3C191BF65000639E91 /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F9A6B3B191BF65000639E91 /* SearchViewController.m */; };
+		6F9A6B40191BF8D400639E91 /* SearchTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F9A6B3F191BF8D400639E91 /* SearchTableViewController.m */; };
+		6F9A6B43191BFE3800639E91 /* SearchAnswer.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F9A6B42191BFE3800639E91 /* SearchAnswer.m */; };
+		6F9A6B46191D400300639E91 /* SearchResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F9A6B45191D400300639E91 /* SearchResultViewController.m */; };
 		6FF20F90190D19B30060DF24 /* BookingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FF20F8F190D19B30060DF24 /* BookingViewController.m */; };
 		6FF20F95190D55350060DF24 /* NewUserRegistrationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FF20F94190D55350060DF24 /* NewUserRegistrationViewController.m */; };
 		6FF20F98190D7AD90060DF24 /* EditUserRegistrationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FF20F97190D7AD90060DF24 /* EditUserRegistrationViewController.m */; };
@@ -45,8 +49,16 @@
 		6F527C9E18EC848C000D578D /* BookingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = BookingsViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		6F527C9F18EC848C000D578D /* tickets-ios-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "tickets-ios-Info.plist"; sourceTree = "<group>"; };
 		6F527CA018EC848C000D578D /* tickets-ios-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "tickets-ios-Prefix.pch"; sourceTree = "<group>"; };
-		6F527CA118EC848C000D578D /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = User.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
-		6F527CA218EC848C000D578D /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = User.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		6F527CA118EC848C000D578D /* Booking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = Booking.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		6F527CA218EC848C000D578D /* Booking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = Booking.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		6F9A6B3A191BF65000639E91 /* SearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchViewController.h; sourceTree = "<group>"; };
+		6F9A6B3B191BF65000639E91 /* SearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchViewController.m; sourceTree = "<group>"; };
+		6F9A6B3E191BF8D400639E91 /* SearchTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchTableViewController.h; sourceTree = "<group>"; };
+		6F9A6B3F191BF8D400639E91 /* SearchTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchTableViewController.m; sourceTree = "<group>"; };
+		6F9A6B41191BFE3800639E91 /* SearchAnswer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchAnswer.h; sourceTree = "<group>"; };
+		6F9A6B42191BFE3800639E91 /* SearchAnswer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchAnswer.m; sourceTree = "<group>"; };
+		6F9A6B44191D400300639E91 /* SearchResultViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchResultViewController.h; sourceTree = "<group>"; };
+		6F9A6B45191D400300639E91 /* SearchResultViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchResultViewController.m; sourceTree = "<group>"; };
 		6FF20F8E190D19B30060DF24 /* BookingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BookingViewController.h; sourceTree = "<group>"; };
 		6FF20F8F190D19B30060DF24 /* BookingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BookingViewController.m; sourceTree = "<group>"; };
 		6FF20F93190D55350060DF24 /* NewUserRegistrationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewUserRegistrationViewController.h; sourceTree = "<group>"; };
@@ -127,10 +139,25 @@
 		6F527CAD18EC873D000D578D /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				6F527CA118EC848C000D578D /* User.h */,
-				6F527CA218EC848C000D578D /* User.m */,
+				6F527CA118EC848C000D578D /* Booking.h */,
+				6F527CA218EC848C000D578D /* Booking.m */,
+				6F9A6B41191BFE3800639E91 /* SearchAnswer.h */,
+				6F9A6B42191BFE3800639E91 /* SearchAnswer.m */,
 			);
 			name = Models;
+			sourceTree = "<group>";
+		};
+		6F9A6B3D191BF65600639E91 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				6F9A6B3A191BF65000639E91 /* SearchViewController.h */,
+				6F9A6B3B191BF65000639E91 /* SearchViewController.m */,
+				6F9A6B3E191BF8D400639E91 /* SearchTableViewController.h */,
+				6F9A6B3F191BF8D400639E91 /* SearchTableViewController.m */,
+				6F9A6B44191D400300639E91 /* SearchResultViewController.h */,
+				6F9A6B45191D400300639E91 /* SearchResultViewController.m */,
+			);
+			name = Search;
 			sourceTree = "<group>";
 		};
 		6FF20F91190D23DD0060DF24 /* Bookings */ = {
@@ -151,6 +178,7 @@
 				6F527C9B18EC848C000D578D /* LoginViewController.m */,
 				6FF20F99190D7B360060DF24 /* Users */,
 				6FF20F91190D23DD0060DF24 /* Bookings */,
+				6F9A6B3D191BF65600639E91 /* Search */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -233,13 +261,17 @@
 			files = (
 				6FF20F98190D7AD90060DF24 /* EditUserRegistrationViewController.m in Sources */,
 				6F527CA918EC848C000D578D /* BookingsViewController.m in Sources */,
+				6F9A6B3C191BF65000639E91 /* SearchViewController.m in Sources */,
 				6FF20F95190D55350060DF24 /* NewUserRegistrationViewController.m in Sources */,
 				6F527CA818EC848C000D578D /* main.m in Sources */,
 				6F527CA718EC848C000D578D /* LoginViewController.m in Sources */,
 				6FF20F90190D19B30060DF24 /* BookingViewController.m in Sources */,
-				6F527CAB18EC848C000D578D /* User.m in Sources */,
+				6F9A6B43191BFE3800639E91 /* SearchAnswer.m in Sources */,
+				6F9A6B46191D400300639E91 /* SearchResultViewController.m in Sources */,
+				6F527CAB18EC848C000D578D /* Booking.m in Sources */,
 				6F527CA318EC848C000D578D /* AppDelegate.m in Sources */,
 				6F527CA518EC848C000D578D /* HTTPHelper.m in Sources */,
+				6F9A6B40191BF8D400639E91 /* SearchTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

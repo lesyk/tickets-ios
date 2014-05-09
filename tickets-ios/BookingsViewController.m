@@ -7,7 +7,7 @@
 //
 
 #import "BookingsViewController.h"
-#import "User.h"
+#import "Booking.h"
 #import "HTTPHelper.h"
 #import "BookingViewController.h"
 
@@ -46,7 +46,7 @@
     NSArray *jsonObject = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
     
     for (int i = 0; i < jsonObject.count; i++) {
-        User *user = [[User alloc] init];
+        Booking *user = [[Booking alloc] init];
         NSDictionary *curuser = [jsonObject objectAtIndex:i];
         user.firstName = [curuser objectForKey:@"title"];
         user.lastName = [curuser objectForKey:@"code"];
@@ -79,7 +79,7 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
     
-    User *curUser = (User *)[self.users objectAtIndex:indexPath.row];
+    Booking *curUser = (Booking *)[self.users objectAtIndex:indexPath.row];
     
     cell.textLabel.text = curUser.firstName;
     cell.detailTextLabel.text = curUser.lastName;

@@ -6,9 +6,9 @@
 //  Copyright (c) 2014 Viktor Lesyk. All rights reserved.
 //
 
-#import "User.h"
+#import "Booking.h"
 
-@implementation User
+@implementation Booking
 
 @synthesize firstName, lastName;
 

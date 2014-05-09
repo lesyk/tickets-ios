@@ -8,9 +8,9 @@
 
 #import <Foundation/Foundation.h>
 
-@interface User : NSObject
+@interface Booking : NSObject
+
 @property NSString* firstName;
 @property NSString* lastName;
-
 
 @end
