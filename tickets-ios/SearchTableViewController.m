@@ -7,7 +7,7 @@
 //
 
 #import "SearchTableViewController.h"
-#import "SearchAnswer.h"
+#import "Booking.h"
 #import "SearchResultViewController.h"
 
 @interface SearchTableViewController ()
@@ -61,10 +61,11 @@
     static NSString *CellIdentifier = @"Cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
 
-    SearchAnswer *curS = (SearchAnswer *)[self.searchResults objectAtIndex:indexPath.row];
+    Booking *curS = (Booking *)[self.searchResults objectAtIndex:indexPath.row];
 
-    cell.textLabel.text = [NSString stringWithFormat:@"%d - %d",curS.from,curS.to];
-    cell.detailTextLabel.text = [NSString stringWithFormat:@"%d",curS.minPrice];
+    cell.textLabel.text = [NSString stringWithFormat:@"%@ - %@",curS.from,curS.to];
+    cell.detailTextLabel.text = [NSString stringWithFormat:@"%@",curS.price];
+    
 
     return cell;
 }
@@ -125,9 +126,14 @@
         SearchResultViewController *srvc = [segue destinationViewController];
         NSIndexPath *myIndexPath = [self.tableView indexPathForSelectedRow];
         long row = [myIndexPath row];
-        SearchAnswer *a = self.searchResults[row];
-        [srvc setRoute:[NSString stringWithFormat:@"%d - %d",a.from,a.to]];
-        [srvc setPrice:[NSString stringWithFormat:@"%d",a.minPrice]];
+        Booking *a = self.searchResults[row];
+        
+        [srvc setFrom:[NSString stringWithFormat:@"%@",a.from]];
+        [srvc setTo:[NSString stringWithFormat:@"%@",a.to]];
+        [srvc setPrice:[NSString stringWithFormat:@"%@",a.price]];
+        [srvc setDate:[NSString stringWithFormat:@"%@",a.date]];
+        [srvc setDate_back:[NSString stringWithFormat:@"%@",a.date_back]];
+        [srvc setCode:[NSString stringWithFormat:@"%@",a.code]];
     }
 }
 

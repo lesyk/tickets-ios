@@ -8,7 +8,7 @@
 
 #import "SearchViewController.h"
 #import "HTTPHelper.h"
-#import "SearchAnswer.h"
+#import "Booking.h"
 #import "SearchTableViewController.h"
 
 @interface SearchViewController ()
@@ -85,11 +85,14 @@
             NSArray *jsonObject = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
             
             for (int i = 0; i < jsonObject.count; i++) {
-                SearchAnswer *search = [[SearchAnswer alloc] init];
+                Booking *search = [[Booking alloc] init];
                 NSDictionary *curuser = [jsonObject objectAtIndex:i];
-                search.minPrice = [[curuser objectForKey:@"MinPrice"] integerValue];
-                search.from = [[[curuser objectForKey:@"OutboundLeg"] objectForKey:@"OriginId"] integerValue];
-                search.to = [[[curuser objectForKey:@"InboundLeg"] objectForKey:@"OriginId"] integerValue];
+                
+                search.price = [curuser objectForKey:@"MinPrice"];
+                search.from = [[curuser objectForKey:@"OutboundLeg"] objectForKey:@"OriginId"];
+                search.to = [[curuser objectForKey:@"InboundLeg"] objectForKey:@"OriginId"];
+                search.date = @"2014-06-06";
+                search.date_back = @"2014-06-06";
                 [self.searchResults addObject:search];
             }
         }else{

@@ -7,13 +7,16 @@
 //
 
 #import "SearchResultViewController.h"
+#import "HTTPHelper.h"
+#import "BookingsViewController.h"
 
 @interface SearchResultViewController ()
 
 @end
 
 @implementation SearchResultViewController
-@synthesize routeLabel, route, priceLabel, price;
+
+@synthesize code, from, to, routeLabel, price, priceLabel, date, dateLabel, date_back, date_backLabel;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -27,8 +30,16 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+
+    NSMutableString *route = [[NSMutableString alloc] initWithString:@""];
+    [route appendString:[NSString stringWithFormat:@"%@",self.from]];
+    [route appendString:@" - "];
+    [route appendString:[NSString stringWithFormat:@"%@",self.to]];
+
     routeLabel.text = route;
     priceLabel.text = price;
+    dateLabel.text = date;
+    date_backLabel.text = date_back;
     // Do any additional setup after loading the view.
 }
 
@@ -50,6 +61,29 @@
 */
 
 - (IBAction)bookAction:(id)sender {
+    NSArray *objects = [NSArray arrayWithObjects:from, to, date, date_back, price,  nil];
+    NSArray *keys = [NSArray arrayWithObjects:@"from", @"to", @"date", @"date_back", @"price", nil];
+    NSDictionary *questionDict = [NSDictionary dictionaryWithObjects:objects forKeys:keys];
+    NSDictionary *mapData = [NSDictionary dictionaryWithObject:questionDict forKey:@"booking"];
+    NSString * response = [HTTPHelper postResponse:@"/bookings" withMapData:mapData method:@"POST"];
     
+    if(response){
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Success"
+                                                        message:@"Booking was created."
+                                                       delegate:nil
+                                              cancelButtonTitle:@"OK"
+                                              otherButtonTitles:nil];
+        BookingsViewController *b = [self.storyboard instantiateViewControllerWithIdentifier:@"MainMenu"];
+        [self presentViewController:b animated:YES completion:nil];
+        [alert show];
+    }else{
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error occured"
+                                                        message:@"Booking wasn't created."
+                                                       delegate:nil
+                                              cancelButtonTitle:@"OK"
+                                              otherButtonTitles:nil];
+        NSLog(@"Error!");
+        [alert show];
+    }
 }
 @end

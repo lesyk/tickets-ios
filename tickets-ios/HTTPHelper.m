@@ -62,7 +62,7 @@ static NSString *const host = @"http://0.0.0.0:3000";
     NSData *oResponseData = [NSURLConnection sendSynchronousRequest:request returningResponse:&responseCode error:&error];
     
 //    solve with server issue 406 code
-    if([responseCode statusCode] != 200 && [responseCode statusCode] != 406){
+    if([responseCode statusCode] != 200 && [responseCode statusCode] != 201 && [responseCode statusCode] != 204 && [responseCode statusCode] != 406){
         NSLog(@"Error getting %@, HTTP status code %i", input, [responseCode statusCode]);
         return nil;
     }

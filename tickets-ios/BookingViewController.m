@@ -62,7 +62,13 @@
     [url appendString:self.code];
     NSString * response = [HTTPHelper postResponse:url withMapData:mapData method:@"DELETE"];
     
-    if(!response){
+    if(response){
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Removed"
+                                                        message:@"Booking destroyed."
+                                                       delegate:nil
+                                              cancelButtonTitle:@"OK"
+                                              otherButtonTitles:nil];
+        [alert show];
         BookingsViewController *bookingsView = [self.storyboard instantiateViewControllerWithIdentifier:@"MainMenu"];
         [self presentViewController:bookingsView animated:YES completion:nil];
     }else{

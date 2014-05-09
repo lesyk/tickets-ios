@@ -10,6 +10,6 @@
 
 @implementation Booking
 
-@synthesize route, date, date_back, code, price;
+@synthesize from, to, date, date_back, code, price;
 
 @end

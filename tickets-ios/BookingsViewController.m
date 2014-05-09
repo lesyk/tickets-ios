@@ -57,11 +57,14 @@
         NSDictionary *curuser = [jsonObject objectAtIndex:i];
         b.price = [curuser objectForKey:@"price"];
         b.code = [[curuser objectForKey:@"id"] stringValue];
-        NSMutableString *route = [[NSMutableString alloc] initWithString:@""];
-        [route appendString:[curuser objectForKey:@"from"]];
-        [route appendString:@" - "];
-        [route appendString:[curuser objectForKey:@"to"]];
-        b.route = route;
+
+//        NSMutableString *route = [[NSMutableString alloc] initWithString:@""];
+//        [route appendString:[curuser objectForKey:@"from"]];
+//        [route appendString:@" - "];
+//        [route appendString:[curuser objectForKey:@"to"]];
+        
+        b.from = [curuser objectForKey:@"from"];
+        b.to = [curuser objectForKey:@"to"];
         b.date = [curuser objectForKey:@"date"];
         b.date_back = [curuser objectForKey:@"date_back"];
         [self.bookings addObject:b];
@@ -93,7 +96,12 @@
     
     Booking *curB = (Booking *)[self.bookings objectAtIndex:indexPath.row];
     
-    cell.textLabel.text = curB.route;
+    NSMutableString *route = [[NSMutableString alloc] initWithString:@""];
+    [route appendString:curB.from];
+    [route appendString:@" - "];
+    [route appendString:curB.to];
+    
+    cell.textLabel.text = route;
     cell.detailTextLabel.text = curB.code;
     
     return cell;
@@ -109,7 +117,13 @@
         NSIndexPath *myIndexPath = [self.tableView indexPathForSelectedRow];
         long row = [myIndexPath row];
         Booking *a = self.bookings[row];
-        [srvc setRoute:[NSString stringWithFormat:@"%@",a.route]];
+        
+        NSMutableString *route = [[NSMutableString alloc] initWithString:@""];
+        [route appendString:[NSString stringWithFormat:@"%@",a.from]];
+        [route appendString:@" - "];
+        [route appendString:[NSString stringWithFormat:@"%@",a.to]];
+        [srvc setRoute:[NSString stringWithFormat:@"%@",route]];
+        
         [srvc setPrice:[NSString stringWithFormat:@"%@",a.price]];
         [srvc setDate:[NSString stringWithFormat:@"%@",a.date]];
         [srvc setDate_back:[NSString stringWithFormat:@"%@",a.date_back]];
