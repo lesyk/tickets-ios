@@ -10,7 +10,10 @@
 
 @interface Booking : NSObject
 
-@property NSString* firstName;
-@property NSString* lastName;
+@property NSString* route;
+@property NSString* date;
+@property NSString* date_back;
+@property NSString* code;
+@property NSString* price;
 
 @end

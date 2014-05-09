@@ -69,7 +69,14 @@
         NSArray *objects = [NSArray arrayWithObjects:toInput.text,fromInput.text,  nil];
         NSArray *keys = [NSArray arrayWithObjects:@"to",@"from", nil];
         NSDictionary *mapData = [NSDictionary dictionaryWithObjects:objects forKeys:keys];
-        NSString * response = [HTTPHelper postResponse:@"/search/index" withMapData:mapData];
+        
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        NSString *token = [defaults valueForKey:@"token"];
+        
+        NSMutableString *url = [[NSMutableString alloc] initWithString:@"/search/index.json?auth_token="];
+        [url appendString:token];
+        
+        NSString * response = [HTTPHelper postResponse:url withMapData:mapData method:@"POST"];
         
         self.searchResults = [[NSMutableArray alloc] init];
         

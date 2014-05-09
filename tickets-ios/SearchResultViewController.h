@@ -10,7 +10,11 @@
 
 @interface SearchResultViewController : UIViewController
 
-@property (weak, nonatomic) IBOutlet UILabel *fromLabel;
-@property (strong, nonatomic) NSString *from;
+@property (weak, nonatomic) IBOutlet UILabel *routeLabel;
+@property (strong, nonatomic) NSString *route;
 
+@property (weak, nonatomic) IBOutlet UILabel *priceLabel;
+@property (strong, nonatomic) NSString *price;
+
+- (IBAction)bookAction:(id)sender;
 @end

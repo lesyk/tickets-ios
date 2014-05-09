@@ -63,7 +63,7 @@
     NSArray *keys = [NSArray arrayWithObjects:@"password",@"email", nil];
     NSDictionary *questionDict = [NSDictionary dictionaryWithObjects:objects forKeys:keys];
     NSDictionary *mapData = [NSDictionary dictionaryWithObject:questionDict forKey:@"user"];
-    NSString * response = [HTTPHelper postResponse:@"/users/sign_in" withMapData:mapData];
+    NSString * response = [HTTPHelper postResponse:@"/users/sign_in" withMapData:mapData method:@"POST"];
     
     if(response){
         NSData* data = [response dataUsingEncoding:NSUTF8StringEncoding];

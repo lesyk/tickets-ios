@@ -69,7 +69,7 @@
     NSArray *keys = [NSArray arrayWithObjects:@"password_confirmation", @"password", @"email", nil];
     NSDictionary *questionDict = [NSDictionary dictionaryWithObjects:objects forKeys:keys];
     NSDictionary *mapData = [NSDictionary dictionaryWithObject:questionDict forKey:@"user"];
-    NSString * response = [HTTPHelper postResponse:@"/users" withMapData:mapData];
+    NSString * response = [HTTPHelper postResponse:@"/users" withMapData:mapData method:@"POST"];
     
     if(response){
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Success"

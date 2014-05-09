@@ -123,7 +123,11 @@
     if ([[segue identifier] isEqualToString:@"showSearchResult"])
     {
         SearchResultViewController *srvc = [segue destinationViewController];
-        [srvc setFrom:@"name" ];
+        NSIndexPath *myIndexPath = [self.tableView indexPathForSelectedRow];
+        long row = [myIndexPath row];
+        SearchAnswer *a = self.searchResults[row];
+        [srvc setRoute:[NSString stringWithFormat:@"%d - %d",a.from,a.to]];
+        [srvc setPrice:[NSString stringWithFormat:@"%d",a.minPrice]];
     }
 }
 

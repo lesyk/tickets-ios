@@ -12,7 +12,7 @@
 #import "BookingViewController.h"
 
 @interface BookingsViewController ()
-@property NSMutableArray* users;
+@property NSMutableArray* bookings;
 @end
 
 @implementation BookingsViewController
@@ -32,8 +32,15 @@
                                                      self.tableView.contentInset.bottom,
                                                      self.tableView.contentInset.right)];
     [super viewDidLoad];
-    self.users = [[NSMutableArray alloc] init];
+    self.bookings = [[NSMutableArray alloc] init];
+    [self refreshData];
+    [self.tableView reloadData];
     
+}
+
+- (void)refreshData
+{
+    [self.bookings removeAllObjects];
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSString *token = [defaults valueForKey:@"token"];
     
@@ -46,14 +53,19 @@
     NSArray *jsonObject = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
     
     for (int i = 0; i < jsonObject.count; i++) {
-        Booking *user = [[Booking alloc] init];
+        Booking *b = [[Booking alloc] init];
         NSDictionary *curuser = [jsonObject objectAtIndex:i];
-        user.firstName = [curuser objectForKey:@"title"];
-        user.lastName = [curuser objectForKey:@"code"];
-        [self.users addObject:user];
+        b.price = [curuser objectForKey:@"price"];
+        b.code = [[curuser objectForKey:@"id"] stringValue];
+        NSMutableString *route = [[NSMutableString alloc] initWithString:@""];
+        [route appendString:[curuser objectForKey:@"from"]];
+        [route appendString:@" - "];
+        [route appendString:[curuser objectForKey:@"to"]];
+        b.route = route;
+        b.date = [curuser objectForKey:@"date"];
+        b.date_back = [curuser objectForKey:@"date_back"];
+        [self.bookings addObject:b];
     }
-    [self.tableView reloadData];
-    
 }
 
 - (void)didReceiveMemoryWarning
@@ -70,7 +82,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return self.users.count;
+    return self.bookings.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -79,10 +91,10 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
     
-    Booking *curUser = (Booking *)[self.users objectAtIndex:indexPath.row];
+    Booking *curB = (Booking *)[self.bookings objectAtIndex:indexPath.row];
     
-    cell.textLabel.text = curUser.firstName;
-    cell.detailTextLabel.text = curUser.lastName;
+    cell.textLabel.text = curB.route;
+    cell.detailTextLabel.text = curB.code;
     
     return cell;
 }
@@ -93,8 +105,20 @@
 {
     if ([[segue identifier] isEqualToString:@"openBooking"])
     {
-        [segue.destinationViewController setBookingNumber:@"name222"];
+        BookingViewController *srvc = [segue destinationViewController];
+        NSIndexPath *myIndexPath = [self.tableView indexPathForSelectedRow];
+        long row = [myIndexPath row];
+        Booking *a = self.bookings[row];
+        [srvc setRoute:[NSString stringWithFormat:@"%@",a.route]];
+        [srvc setPrice:[NSString stringWithFormat:@"%@",a.price]];
+        [srvc setDate:[NSString stringWithFormat:@"%@",a.date]];
+        [srvc setDate_back:[NSString stringWithFormat:@"%@",a.date_back]];
+        [srvc setCode:[NSString stringWithFormat:@"%@",a.code]];
     }
 }
 
+- (IBAction)reloadData:(id)sender {
+    [self refreshData];
+    [self.tableView reloadData];
+}
 @end

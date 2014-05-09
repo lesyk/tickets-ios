@@ -13,7 +13,7 @@
 @end
 
 @implementation SearchResultViewController
-@synthesize fromLabel, from;
+@synthesize routeLabel, route, priceLabel, price;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -27,7 +27,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    fromLabel.text = from;
+    routeLabel.text = route;
+    priceLabel.text = price;
     // Do any additional setup after loading the view.
 }
 
@@ -48,4 +49,7 @@
 }
 */
 
+- (IBAction)bookAction:(id)sender {
+    
+}
 @end

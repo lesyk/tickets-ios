@@ -8,7 +8,6 @@
 @interface HTTPHelper : NSObject
 
 + (NSString *) getResponse: (NSString*)input;
-+ (NSString *) postResponse:(NSString *)input withMapData:(NSDictionary *)mapData;
-+ (NSString *) putResponse:(NSString *)input withMapData:(NSDictionary *)mapData;
++ (NSString *) postResponse:(NSString *)input withMapData:(NSDictionary *)mapData method:(NSString*)method;
 
 @end

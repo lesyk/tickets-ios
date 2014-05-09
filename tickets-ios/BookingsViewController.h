@@ -10,4 +10,6 @@
 
 @interface BookingsViewController : UITableViewController
 
+- (IBAction)reloadData:(id)sender;
+
 @end

@@ -8,13 +8,14 @@
 
 #import "BookingViewController.h"
 #import "BookingsViewController.h"
+#import "HTTPHelper.h"
 
 @interface BookingViewController ()
 @end
 
 @implementation BookingViewController
 
-@synthesize bookingNumberLabel, bookingNumber;
+@synthesize codeLabel, code, route, routeLabel, price, priceLabel, date, dateLabel, date_back, date_backLabel;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -28,7 +29,11 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    bookingNumberLabel.text = bookingNumber;
+    codeLabel.text = code;
+    priceLabel.text = price;
+    dateLabel.text = date;
+    date_backLabel.text = date_back;
+    routeLabel.text = route;
 }
 
 - (void)didReceiveMemoryWarning
@@ -48,4 +53,26 @@
 }
 */
 
+- (IBAction)removeBookingAction:(id)sender {
+    NSArray *objects = [NSArray arrayWithObjects:self.code, nil];
+    NSArray *keys = [NSArray arrayWithObjects:@"id", nil];
+    NSDictionary *questionDict = [NSDictionary dictionaryWithObjects:objects forKeys:keys];
+    NSDictionary *mapData = [NSDictionary dictionaryWithObject:questionDict forKey:@"user"];
+    NSMutableString *url = [[NSMutableString alloc] initWithString:@"/bookings/"];
+    [url appendString:self.code];
+    NSString * response = [HTTPHelper postResponse:url withMapData:mapData method:@"DELETE"];
+    
+    if(!response){
+        BookingsViewController *bookingsView = [self.storyboard instantiateViewControllerWithIdentifier:@"MainMenu"];
+        [self presentViewController:bookingsView animated:YES completion:nil];
+    }else{
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error occured"
+                                                        message:@"Deletion failed."
+                                                       delegate:nil
+                                              cancelButtonTitle:@"OK"
+                                              otherButtonTitles:nil];
+        NSLog(@"Error!");
+        [alert show];
+    }
+}
 @end
