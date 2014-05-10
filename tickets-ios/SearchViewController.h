@@ -12,5 +12,7 @@
 
 @property (weak, nonatomic) IBOutlet UITextField *fromInput;
 @property (weak, nonatomic) IBOutlet UITextField *toInput;
+@property (weak, nonatomic) IBOutlet UITextField *dateInput;
+@property (weak, nonatomic) IBOutlet UITextField *date_backInput;
 
 @end

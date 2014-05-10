@@ -25,5 +25,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *priceLabel;
 @property (strong, nonatomic) NSString *price;
 
+
+
 - (IBAction)bookAction:(id)sender;
 @end

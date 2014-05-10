@@ -16,7 +16,7 @@
 @end
 
 @implementation SearchViewController
-@synthesize toInput, fromInput, searchResults;
+@synthesize toInput, fromInput, searchResults, date_backInput, dateInput;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -59,6 +59,12 @@
     if ([fromInput isFirstResponder] && [touch view] != fromInput) {
         [fromInput resignFirstResponder];
     }
+    if ([dateInput isFirstResponder] && [touch view] != dateInput) {
+        [dateInput resignFirstResponder];
+    }
+    if ([date_backInput isFirstResponder] && [touch view] != date_backInput) {
+        [date_backInput resignFirstResponder];
+    }
     [super touchesBegan:touches withEvent:event];
 }
 
@@ -66,8 +72,8 @@
 {
     if ([[segue identifier] isEqualToString:@"openSearchResults"])
     {
-        NSArray *objects = [NSArray arrayWithObjects:toInput.text,fromInput.text,  nil];
-        NSArray *keys = [NSArray arrayWithObjects:@"to",@"from", nil];
+        NSArray *objects = [NSArray arrayWithObjects:toInput.text,fromInput.text,dateInput.text,date_backInput.text,  nil];
+        NSArray *keys = [NSArray arrayWithObjects:@"to",@"from",@"date",@"date_back", nil];
         NSDictionary *mapData = [NSDictionary dictionaryWithObjects:objects forKeys:keys];
         
         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
