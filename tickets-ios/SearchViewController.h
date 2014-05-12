@@ -14,5 +14,6 @@
 @property (weak, nonatomic) IBOutlet UITextField *toInput;
 @property (weak, nonatomic) IBOutlet UITextField *dateInput;
 @property (weak, nonatomic) IBOutlet UITextField *date_backInput;
+- (IBAction)lookupDirectionsAction:(id)sender;
 
 @end

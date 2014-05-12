@@ -115,4 +115,40 @@
     }
 }
 
+- (IBAction)lookupDirectionsAction:(id)sender {
+    NSArray *objects = [NSArray arrayWithObjects:@"message", @"5",  nil];
+    NSArray *keys = [NSArray arrayWithObjects:@"message",@"number", nil];
+    NSDictionary *mapData = [NSDictionary dictionaryWithObjects:objects forKeys:keys];
+    
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSString *token = [defaults valueForKey:@"token"];
+    
+    NSMutableString *url = [[NSMutableString alloc] initWithString:@"/search/lookup_directions.json?auth_token="];
+    [url appendString:token];
+    
+    NSString * response = [HTTPHelper postResponse:url withMapData:mapData method:@"POST"];
+    
+    self.searchResults = [[NSMutableArray alloc] init];
+    
+    if(response){
+        NSData* data = [response dataUsingEncoding:NSUTF8StringEncoding];
+        NSDictionary *jsonObject = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
+        NSString *message = [jsonObject objectForKey:@"message"];
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Server answer"
+                                                        message:message
+                                                       delegate:nil
+                                              cancelButtonTitle:@"OK"
+                                              otherButtonTitles:nil];
+        [alert show];
+        
+    }else{
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error occured"
+                                                        message:@"Search failed."
+                                                       delegate:nil
+                                              cancelButtonTitle:@"OK"
+                                              otherButtonTitles:nil];
+        NSLog(@"Error!");
+        [alert show];
+    }
+}
 @end
